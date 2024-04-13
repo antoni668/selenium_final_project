@@ -1,4 +1,4 @@
-logs/*
+../logs/log_2024-04-12_01-18-43.log
 !logs/
 
 test_results/*

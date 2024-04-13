@@ -1,0 +1,13 @@
+Start Test
+Current URL: https://zlatoz.ru/
+auth block clicked
+username entered
+password entered
+login button clicked
+Good value word
+catalog clicked
+knives selected
+Good value URL
+Current URL: https://zlatoz.ru/catalog/nozhi_ukrashennye_/
+click product availability
+Finish Test

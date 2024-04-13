@@ -1,0 +1,11 @@
+Start Test
+Current URL: https://zlatoz.ru/
+auth block clicked
+username entered
+password entered
+login button clicked
+Good value word
+catalog clicked
+knives selected
+Good value URL
+Finish Test

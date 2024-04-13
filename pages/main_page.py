@@ -1,3 +1,4 @@
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -23,7 +24,10 @@ class MainPage(Base):
     login_button = '//button[normalize-space(span)="Войти"]'
     my_office = '//*[@id="header"]//span[normalize-space(span)="Мой кабинет"]/span'
     catalog = '//header[@id="header"]//a[contains(., "Каталог")]'
+    product_menu_element = '//div[@class="burger_menu_wrapper"]//span[contains(text(), "Длинноклинковое")]'
     knives = '//header[@id="header"]//a[contains(., "Ножи украшенные")]'
+
+
 
 
     # Getters
@@ -51,6 +55,10 @@ class MainPage(Base):
         return WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.catalog)))
 
+    def get_product_menu_element(self):
+        return WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.product_menu_element)))
+
     def get_knives(self):
         return WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.knives)))
@@ -77,6 +85,10 @@ class MainPage(Base):
         self.get_catalog().click()
         print('catalog clicked')
 
+    def move_to_product_menu_element(self, actions):
+        actions.move_to_element(self.get_product_menu_element()).perform()
+        print('move to product menu element')
+
     def click_knives(self):
         self.get_knives().click()
         print('knives selected')
@@ -97,8 +109,11 @@ class MainPage(Base):
             Logger.add_end_step(url=self.driver.current_url, method="authorization")
 
     def open_product_page(self):
-        Logger.add_start_step(method="open_product_page")
-        self.click_catalog()
-        self.click_knives()
-        self.assert_url(self.product_page_url)
-        Logger.add_end_step(url=self.driver.current_url, method="open_product_page")
+        with allure.step('Open product page'):
+            Logger.add_start_step(method="open_product_page")
+            actions = ActionChains(self.driver)
+            self.click_catalog()
+            # self.move_to_product_menu_element(actions)
+            self.click_knives()
+            self.assert_url(self.product_page_url)
+            Logger.add_end_step(url=self.driver.current_url, method="open_product_page")

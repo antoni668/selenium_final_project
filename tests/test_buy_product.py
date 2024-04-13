@@ -2,6 +2,7 @@ import time
 import allure
 from selenium import webdriver
 from pages.main_page import MainPage
+from pages.product_page import ProductPage
 
 
 @allure.description("Test buy product")
@@ -13,9 +14,12 @@ def test_buy_product():
 
     print("Start Test")
 
-    login = MainPage(driver)
-    login.authorization()
-    login.open_product_page()
+    main = MainPage(driver)
+    main.authorization()
+    main.open_product_page()
+
+    prod = ProductPage(driver)
+    prod.select_product()
 
 
     print("Finish Test")

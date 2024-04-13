@@ -1,0 +1,10 @@
+Test: tests/test_buy_product.py::test_buy_product (call)
+Start time: 2024-04-13 17:43:07.300747
+Start name method: authorization
+
+End time: 2024-04-13 17:43:14.025057
+End name method: authorization
+URL: https://zlatoz.ru/
+
+-----
+

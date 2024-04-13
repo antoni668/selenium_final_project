@@ -1,0 +1,30 @@
+Test: tests/test_buy_product.py::test_buy_product (call)
+Start time: 2024-04-13 22:25:40.384034
+Start name method: authorization
+
+End time: 2024-04-13 22:25:47.190015
+End name method: authorization
+URL: https://zlatoz.ru/
+
+-----
+
+Test: tests/test_buy_product.py::test_buy_product (call)
+Start time: 2024-04-13 22:25:47.191016
+Start name method: open_product_page
+
+End time: 2024-04-13 22:25:49.875266
+End name method: open_product_page
+URL: https://zlatoz.ru/catalog/nozhi_ukrashennye_/
+
+-----
+
+Test: tests/test_buy_product.py::test_buy_product (call)
+Start time: 2024-04-13 22:25:49.875266
+Start name method: select_product
+
+End time: 2024-04-13 22:25:51.409196
+End name method: select_product
+URL: https://zlatoz.ru/catalog/nozhi_ukrashennye_/?set_filter=y&KSHOP_SMART_FILTER_1004_2764304435=Y&KSHOP_SMART_FILTER_P1_MIN=35875.52
+
+-----
+
