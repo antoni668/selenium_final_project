@@ -8,6 +8,7 @@ import allure
 
 class MainPage(Base):
     url = 'https://zlatoz.ru/'
+    product_page_url = 'https://zlatoz.ru/catalog/nozhi_ukrashennye_/'
     email = 'apetrtest@mail.ru'
     password = 'Df64fT_'
 
@@ -21,6 +22,8 @@ class MainPage(Base):
     password_field = '//input[@id="USER_PASSWORD_POPUP"]'
     login_button = '//button[normalize-space(span)="Войти"]'
     my_office = '//*[@id="header"]//span[normalize-space(span)="Мой кабинет"]/span'
+    catalog = '//header[@id="header"]//a[contains(., "Каталог")]'
+    knives = '//header[@id="header"]//a[contains(., "Ножи украшенные")]'
 
 
     # Getters
@@ -41,8 +44,16 @@ class MainPage(Base):
             EC.element_to_be_clickable((By.XPATH, self.login_button)))
 
     def get_my_office(self):
-        return WebDriverWait(self.driver, 992).until(
+        return WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.my_office)))
+
+    def get_catalog(self):
+        return WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.catalog)))
+
+    def get_knives(self):
+        return WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.knives)))
 
 
     # Actions
@@ -62,6 +73,14 @@ class MainPage(Base):
         self.get_login_button().click()
         print('login button clicked')
 
+    def click_catalog(self):
+        self.get_catalog().click()
+        print('catalog clicked')
+
+    def click_knives(self):
+        self.get_knives().click()
+        print('knives selected')
+
 
     # Methods
     def authorization(self):
@@ -76,3 +95,10 @@ class MainPage(Base):
             self.click_login_button()
             self.assert_word(self.get_my_office(), "МОЙ КАБИНЕТ")
             Logger.add_end_step(url=self.driver.current_url, method="authorization")
+
+    def open_product_page(self):
+        Logger.add_start_step(method="open_product_page")
+        self.click_catalog()
+        self.click_knives()
+        self.assert_url(self.product_page_url)
+        Logger.add_end_step(url=self.driver.current_url, method="open_product_page")

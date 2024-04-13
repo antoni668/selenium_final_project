@@ -15,6 +15,7 @@ def test_buy_product():
 
     login = MainPage(driver)
     login.authorization()
+    login.open_product_page()
 
 
     print("Finish Test")
